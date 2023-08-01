@@ -12,7 +12,7 @@ function App() {
     Headers: { "Content-Type": "application/json" },
   };
 
-  fetch("http://localhost:8080/todo", requestOptions)
+  fetch("http://localhost:8094/todo", requestOptions)
     .then((response) => response.json())
     .then(
       (response) => {
