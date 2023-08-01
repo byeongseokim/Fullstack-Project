@@ -5,18 +5,23 @@ import { Container, List, Paper } from "@mui/material";
 import AddTodo from "./AddTodo";
 
 function App() {
-  const [items, setItems] = useState([
-    // {
-    //   id: "0",
-    //   title: "Hello World 1",
-    //   done: true,
-    // },
-    // {
-    //   id: "1",
-    //   title: "Hello World 2",
-    //   done: true,
-    // },
-  ]);
+  const [items, setItems] = useState([]);
+
+  const requestOptions = {
+    method: "GET",
+    Headers: { "Content-Type": "application/json" },
+  };
+
+  fetch("http://localhost:8080/todo", requestOptions)
+    .then((response) => response.json())
+    .then(
+      (response) => {
+        setItems(response.data);
+      },
+      (error) => {
+
+      }
+    );
 
   const editItem = () => {
     setItems([...items]);
