@@ -12,9 +12,14 @@ export function call(api, method, request) {
         //GET method
         options.body = JSON.stringify(request);
     }
-    return fetch(options.url, options).then((Response) => {
-        if (Response.status === 200) {
-            return Response.json();
+    return fetch(options.url, options).then((response) => {
+        if (response.status === 200) {
+            return response.json();
+        } else if (response.status === 403) {
+            window.location.href = "/login"; //redirect
+        } else {
+            Promise.reject(response);
+            throw Error(response);
         }
     }).catch((error) => {
         console.log("http error");
