@@ -15,7 +15,7 @@ function Copyright() {
     );
 }
 
-function AppRouter() {
+const AppRouter = () => {
 
     return (
         <div>
