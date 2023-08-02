@@ -22,6 +22,19 @@ public class TokenProvider {
         Instant.now()
             .plus(1, ChronoUnit.DAYS));
 
+  /*
+  { // header
+    "alg":"HS512"
+  }.
+  { // payload
+    "sub":"40288093784915d201784916a40c0001",
+    "iss": "demo app",
+    "iat":1595733657,
+    "exp":1596597657
+  }.
+  // SECRET_KEY를 이용해 서명한 부분
+  Nn4d1MOVLZg79sfFACTIpCPKqWmpZMZQsbNrXdJJNWkRv50_l7bPLQPwhMobT4vBOG6Q3JYjhDrKFlBSaUxZOg
+   */
     // JWT Token 생성
     return Jwts.builder()
         // header에 들어갈 내용 및 서명을 하기 위한 SECRET_KEY

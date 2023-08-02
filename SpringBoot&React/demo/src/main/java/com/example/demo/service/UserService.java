@@ -27,8 +27,16 @@ public class UserService {
     return userRepository.save(userEntity);
   }
 
-  public UserEntity getByCredentials(final String username, final String password, PasswordEncoder passwordEncoder) {
-    return userRepository.findByUsernameAndPassword(username, password);
-  }
+  public UserEntity getByCredentials(final String username, final String password, final PasswordEncoder encoder) {
+    final UserEntity originalUser = userRepository.findByUsername(username);
 
+    // matches 메서드를 이용해 패스워드가 같은지 확인
+    if(originalUser != null &&
+        encoder.matches(password,
+            originalUser.getPassword())) {
+      return originalUser;
+    }
+    return null;
+  }
 }
+
