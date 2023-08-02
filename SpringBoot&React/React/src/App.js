@@ -1,16 +1,16 @@
 import "./App.css";
 import Todo from "./Todo";
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  List,
+import { 
+  Container, 
+  List, 
   Paper,
   Grid,
   Button,
   AppBar,
   Toolbar,
   Typography,
-} from "@mui/material";
+ } from "@mui/material";
 import AddTodo from "./AddTodo";
 import { call, signout } from "./service/ApiService";
 
@@ -21,23 +21,23 @@ function App() {
   useEffect(() => {
     call("/todo", "GET", null).then((response) => {
       setItems(response.data);
-      setLoading(true);
+      setLoading(false);
     });
   }, []);
 
   const addItem = (item) => {
     call("/todo", "POST", item)
-      .then((response) => setItems(response.data));
+    .then((response) => setItems(response.data));
   };
 
   const editItem = (item) => {
     call("/todo", "PUT", item)
-      .then((response) => setItems(response.data));
+    .then((response) => setItems(response.data));
   };
 
   const deleteItem = (item) => {
     call("/todo", "DELETE", item)
-      .then((response) => setItems(response.data));
+    .then((response) => setItems(response.data));
   };
 
   let todoItems = items.length > 0 && (
