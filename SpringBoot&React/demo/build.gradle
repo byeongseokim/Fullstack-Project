@@ -30,6 +30,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// https://mvnrepository.com/artifact/com.google.guava/guava
@@ -38,4 +39,32 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+test.onlyIf {
+    !project.hasProperty('test')
+}
+
+task('release') {
+	/* ./gradlew build를 먼저 실행하라는 뜻이다. */
+	dependsOn("build")
+
+	doLast {
+		def stdout = new ByteArrayOutputStream()
+		/* exec - 커맨드 라인 프로세서; 파워셸/터미널에서 실행하는 것과 같다. */
+		exec {
+			/* $eb setenv SPRING_PROFILES_ACTIVE=prod */
+			commandLine 'eb', 'setenv', 'SPRING_PROFILES_ACTIVE=prod'
+			standardOutput = stdout
+		}
+		/* 결과 로깅을 위한 작업 */
+		println "eb setenv SPRING_PROFILES_ACTIVE=prod :\n$stdout";
+		exec {
+			/* $eb deploy */
+			commandLine 'eb', 'deploy'
+			standardOutput = stdout
+		}
+		println "eb deploy :\n$stdout";
+		println "Release succeeded."
+	}
 }
