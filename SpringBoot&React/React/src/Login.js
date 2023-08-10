@@ -4,10 +4,12 @@ import {
   Grid,
   Typography,
   TextField,
-  Button
+  Button,
+
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { signin } from "./service/ApiService";
+import { signin, socialLogin } from "./service/ApiService";
+import { FaGithub } from 'react-icons/fa';
 
 function Login() {
   const handleSubmit = (event) => {
@@ -17,7 +19,11 @@ function Login() {
     const password = data.get("password");
     // ApiService의 signin 메서드를 사용 해 로그인.
     signin({ username: username, password: password });
+  }
+  const handleSocialLogin = (provider) => {
+    socialLogin(provider);
   };
+
 
   return (
     <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
@@ -62,6 +68,14 @@ function Login() {
               로그인
             </Button>
           </Grid>
+
+          <Grid item xs={12}>
+            <Button onClick={() => handleSocialLogin("github")} fullWidth variant="contained" style={{ backgroundColor: '#000' }}>
+              <FaGithub style={{ marginRight: '8px' }} />
+              깃허브로 로그인하기
+            </Button>
+          </Grid>
+
           <Grid item>
             <Link to="/signup" variant="body2" style={{ textDecoration: "none", color: "#2196F3" }} >
               계정이 없습니까? 여기서 가입 하세요.
