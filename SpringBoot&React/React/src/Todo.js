@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import {
+  AiFillStar,
+  AiOutlineStar,
+} from 'react-icons/ai';
+
 import {
   ListItem,
   ListItemText,
@@ -16,7 +21,7 @@ const Todo = (props) => {
   const editItem = props.editItem;
 
   const editEventHandler = (e) => {
-    setItem({...item, title: e.target.value});
+    setItem({ ...item, title: e.target.value });
   };
 
   const checkboxEventHandler = (e) => {
@@ -36,20 +41,26 @@ const Todo = (props) => {
   // turnOnReadOnly 함수 작성
   const turnOnReadOnly = (e) => {
     if (e.key === "Enter" && readOnly === false) {
-        setReadOnly(true);
-        editItem(item);
+      setReadOnly(true);
+      editItem(item);
     }
   };
 
   return (
     <ListItem>
-      <Checkbox checked={item.done}
-      onChange={checkboxEventHandler} />
+      <Checkbox
+        icon={<AiOutlineStar />}
+        checkedIcon={<AiFillStar />}
+        checked={item.done}
+        onChange={checkboxEventHandler}
+        style={{ background: "#DADDE2" }}
+      />
       <ListItemText>
         <InputBase
-          inputProps={{ 
-              "aria-label": "naked",
-              readOnly: readOnly }}
+          inputProps={{
+            "aria-label": "naked",
+            readOnly: readOnly
+          }}
           onClick={turnOffReadOnly}
           onKeyDown={turnOnReadOnly}
           onChange={editEventHandler}
@@ -59,11 +70,14 @@ const Todo = (props) => {
           value={item.title}
           multiline={true}
           fullWidth={true}
+          style={{ background: "#DADDE2" }}
         />
       </ListItemText>
+
       <ListItemSecondaryAction>
         <IconButton aria-label="Delete Todo"
           onClick={deleteEventHandler} >
+
           <DeleteOutlined />
         </IconButton>
       </ListItemSecondaryAction>

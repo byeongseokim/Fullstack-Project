@@ -5,32 +5,41 @@ export function call(api, method, request) {
     "Content-Type": "application/json",
   });
 
-// 로컬 스토리지에서 ACCESS TOKEN 가져오기
   const accessToken = localStorage.getItem("ACCESS_TOKEN");
-   if (accessToken && accessToken !== null) {
+  if (accessToken && accessToken !== null) {
     headers.append("Authorization", "Bearer " + accessToken);
   }
-  
+
   let options = {
     headers: headers,
-    url: API_BASE_URL + api,
     method: method,
   };
+
   if (request) {
-    // GET method
     options.body = JSON.stringify(request);
   }
-  return fetch(options.url, options).then((response) => {
-    if (response.status === 200) {
-      return response.json();
-    } else if(response.status === 403) {
-      window.location.href = "/login"; // redirect
-    } else {
-      new Error(response);
-    }
-  }).catch((error) => {
-      console.log("http error");
-      console.log(error);
+
+  return fetch(API_BASE_URL + api, options)
+    .then((response) => {
+      if (response.status === 200) {
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          return response.json(); // Parse JSON here
+        } else {
+          // Handle non-JSON response here
+          return response.text().then((text) => {
+            throw new Error("Response is not in JSON format: " + text);
+          });
+        }
+      } else if (response.status === 403) {
+        window.location.href = "/login"; // Redirect
+      } else {
+        throw new Error(response.statusText); // Throw an error for non-200 responses
+      }
+    })
+    .catch((error) => {
+      console.error("http error", error);
+      throw error; // Re-throw the error to propagate it further
     });
 }
 
@@ -42,7 +51,7 @@ export function signin(userDTO) {
         localStorage.setItem("ACCESS_TOKEN", response.token);
         // token이 존재하는 경우 Todo 화면으로 리디렉트
         window.location.href = "/";
-      }  
+      }
     });
 }
 

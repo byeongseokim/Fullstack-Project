@@ -38,6 +38,7 @@ function SignUp() {
               id="username"
               label="아이디"
               autoFocus
+              style={{ background: "#DADDE2" }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -50,6 +51,7 @@ function SignUp() {
               type="password"
               id="password"
               autoComplete="current-password"
+              style={{ background: "#DADDE2" }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -63,7 +65,7 @@ function SignUp() {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Link to="/login" variant="body2">
+            <Link to="/login" variant="body2" style={{ textDecoration: "none", color: "#2196F3" }}>
               이미 계정이 있습니까? 로그인 하세요.
             </Link>
           </Grid>

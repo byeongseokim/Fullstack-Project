@@ -8,9 +8,9 @@ import { Typography, Box } from "@mui/material";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center" style={{ textDecoration: "none", color: "#3156F2" }}>
       {"Copyright © "}
-      fsoftwareengineer, {new Date().getFullYear()}
+      <a style={{ textDecoration: "none", color: "#2196F3" }} target="_blank" href="https://github.com/byeongseokim" rel="noreferrer">byeongseok</a>, {new Date().getFullYear()}
       {"."}
     </Typography>
   );
