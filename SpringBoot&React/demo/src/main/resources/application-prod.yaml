@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  PORT: 5000
 spring:
   jpa:
     database: MYSQL
@@ -8,6 +8,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://${rds.hostname}:${rds.port}/${rds.db.name}
+    url: jdbc:mysql://awseb-e-kx2kbwprca-stack-awsebrdsdatabase-5jjj7hmkl2dm.cojux4aissck.ap-northeast-2.rds.amazonaws.com:3306/ebdb
     username: ${rds.username}
     password: ${rds.password}

@@ -68,3 +68,8 @@ task('release') {
 		println "Release succeeded."
 	}
 }
+
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active'] 
+    systemProperty "spring.profiles.active", activeProfile
+}
