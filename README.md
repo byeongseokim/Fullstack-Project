@@ -80,6 +80,7 @@
 </div>
 
 ![로그인](https://user-images.githubusercontent.com/130538673/260356969-b43f573e-5097-48ea-bd36-afd62bc3a8dd.gif)
+![깃허브 로그인](https://github.com/byeongseokim/Fullstack-Project/assets/130538673/c876804d-498c-4b08-99ca-cdc8c91799b8)
 
 - 로그인
   <br>➡️ 아이디 및 비밀번호 입력칸이 공란이 아닐 경우, 로그인 버튼 활성화
