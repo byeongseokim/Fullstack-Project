@@ -1,11 +1,13 @@
 # **📢일정 관리 프로그램 <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; React + SpringBoot 프로젝트**
 
+### **&nbsp;&nbsp;<p>▶ AWS 주소</p>**
+- <a href="byeongseok.o-r.kr">![Amazon AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)</a>
 
 ## 📆 목차 및 기간
 
 - 목차
 
-1. <a href="#a1">메인 페이지</a>
+1. <a href="#a1">메인 페이지</a> <br>
    > ➡️ 로그인 / GitHub 로그인 / 회원가입
 2. <a href="#a2">할 일을 추가</a>
 3. <a href="#a3">테마 변경</a>
