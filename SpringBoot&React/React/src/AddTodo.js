@@ -36,7 +36,7 @@ const AddTodo = (props) => {
           style={{ background: "#DADDE2" }} />
       </Grid>
       <Grid xs={1} md={1} item >
-        <Button fullWidth style={{ marginBottom: '10px', marginTop: '20px', height: '74%' }} color="secondary" variant="outlined"
+        <Button fullWidth style={{ marginBottom: '10px', marginTop: '20px', height: '74%', borderColor: '#2196f3', color: '#2196f3' }} color="secondary" variant="outlined"
           onClick={onButtonClick}>
           +
         </Button>

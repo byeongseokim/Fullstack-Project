@@ -10,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 import { signin, socialLogin } from "./service/ApiService";
 import { FaGithub } from 'react-icons/fa';
+// import { FaGoogle } from 'react-icons/fa';
+
 
 function Login() {
   const handleSubmit = (event) => {
@@ -75,6 +77,14 @@ function Login() {
               깃허브로 로그인하기
             </Button>
           </Grid>
+
+          {/* <Grid item xs={12}>
+            <Button onClick={() => handleSocialLogin("google")} fullWidth variant="contained" style={{ backgroundColor: '#FF3E30' }}>
+              <FaGoogle style={{ marginRight: '8px' }} />
+              Google로 로그인하기
+            </Button>
+          </Grid> */}
+
 
           <Grid item>
             <Link to="/signup" variant="body2" style={{ textDecoration: "none", color: "#2196F3" }} >

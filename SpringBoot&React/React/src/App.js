@@ -82,25 +82,31 @@ function App() {
           <Grid item>
             <Typography variant="h6">나의 일정 관리</Typography>
           </Grid>
-          <Grid theme>
-            <header>
-              <button onClick={toggleDarkMode} style={{ padding: '5px', marginLeft: '1590px' }}>
-                {isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
-                <p style={{ fontSize: "1px" }}>테마 변경</p>
-              </button>
-            </header>
-            <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-              <GlobalStyle />
-            </ThemeProvider>
-          </Grid>
+        </Grid>
+
+        <Grid item container justifyContent="flex-end" alignItems="center">
           <Grid item>
-            <Button color="inherit" variant="contained" onClick={signout}>
+            <Grid theme style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <header>
+                <Button variant="contained" style={{ backgroundColor: '#2196f3', color: 'white' }} onClick={toggleDarkMode}>
+                  {isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
+                  <p>테마 변경</p>
+                </Button>
+              </header>
+              <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+                <GlobalStyle />
+              </ThemeProvider>
+            </Grid>
+          </Grid>
+          &nbsp;
+          <Grid item>
+            <Button variant="contained" onClick={signout} style={{ backgroundColor: '#2196f3' }} >
               로그아웃
             </Button>
           </Grid>
         </Grid>
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 
   /* 로딩중이 아닐 때 렌더링 할 부분 */
