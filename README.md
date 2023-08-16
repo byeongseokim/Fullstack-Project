@@ -1,7 +1,10 @@
 # **📢일정 관리 프로그램 <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; React + SpringBoot 프로젝트**
 
 ### **&nbsp;&nbsp;<p>▶ AWS 주소</p>**
-- [![Amazon AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](http://pord-todo-ui-service.ap-northeast-2.elasticbeanstalk.com/)
+- <a href="http://pord-todo-ui-service.ap-northeast-2.elasticbeanstalk.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="Amazon AWS">
+</a>
+
 
 ## 📆 목차 및 기간
 
